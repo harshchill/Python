@@ -30,6 +30,35 @@ def search(root,value):
     else:
         search(root.right,value)
 
+# Delete function for 0 and 1 child 
+
+def delete (root,value):
+    if root == None:
+        return root
+    elif root.data > value :
+        root.left = delete(root.left,value)
+    elif root.data < value :
+        root.right = delete(root.right,value)
+    else:
+        if root.right == None:
+            return root.left
+        elif root.left == None:
+            return root.right
+        else:
+            successor = get_successor(root)
+            # replce it with the current value
+            root.data = successor.data
+            # delete the successor
+            root.right = delete(root.right,successor.data)
+    return root
+
+# get inorder successor
+def get_successor(root):
+    root = root.right
+    while root != None and root.left != None:
+        root = root.left
+    return root
+
 # for traversal
 def inOrder(root):
     if(root != None):
@@ -44,11 +73,18 @@ def inOrder(root):
 root = insert(None,50)
 root = insert(root,75)
 root = insert(root,25)
-root = insert(root,10)
-root = insert(root,35)
-root = insert(root,60)
-root = insert(root,100)
+root = insert(root,20)
+root = insert(root,30)
+root = insert(root,70)
+root = insert(root,80)
+
+# delete(root,100)
+
 
 inOrder(root)
 
-search()
+delete(root,75)
+print("\n")
+inOrder(root)
+
+# search(root,100)
