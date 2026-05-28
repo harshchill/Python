@@ -50,6 +50,7 @@ def delete (root,value):
             root.data = successor.data
             # delete the successor
             root.right = delete(root.right,successor.data)
+    # make sure to return root at end
     return root
 
 # get inorder successor
