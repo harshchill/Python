@@ -1,6 +1,6 @@
 def knapSack(price,weight,capacity):
     n = len(price)
-    items = [[price[i],weight[i],price[i]/weight[i]] for i in range(n)]
+    items = [(price[i],weight[i],price[i]/weight[i]) for i in range(n)]
     profit = 0.0
 
     for i in range(n):
