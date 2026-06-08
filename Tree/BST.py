@@ -44,6 +44,7 @@ def delete (root,value):
             return root.left
         elif root.left == None:
             return root.right
+        # delete node when it has both child 
         else:
             successor = get_successor(root)
             # replce it with the current value
